@@ -1,4 +1,4 @@
-# dev_nestjs
+# dev_fullstack
 ## bug fixed
 * Q:PS D:\workdir\nodedev\github\dev_nestjs> git add .
 error: 'lesson1/backend/' does not have a commit checked out
