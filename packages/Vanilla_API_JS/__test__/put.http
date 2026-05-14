@@ -1,0 +1,6 @@
+PUT {
+    "title":"Let the Bullets Fly",
+    "year":"2010",
+    "genre":"action,comedy",
+    "rating":"8.3"
+}

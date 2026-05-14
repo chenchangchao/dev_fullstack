@@ -1,0 +1,4 @@
+GET http://localhost:5001/api/movies
+GET /api/movies
+GET /api/movies/213976be-9157-4daa-992b-5b93f68540a6
+GET /api/movies/not-a-uuid

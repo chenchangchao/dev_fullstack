@@ -1,0 +1,22 @@
+{
+  "name": "vanilla-nodejs-crud-api",
+  "version": "1.0.0",
+  "description": "This is vanilla nodejs CRUD API project",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "dustin.chen",
+  "packageManager": "pnpm@10.11.0",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+}
