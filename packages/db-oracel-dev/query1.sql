@@ -1,0 +1,90 @@
+SELECT * FROM v$version;
+
+
+SELECT COLUMN_NAME, DATA_TYPE, DATA_LENGTH, NULLABLE
+FROM ALL_TAB_COLUMNS
+WHERE TABLE_NAME = 'EC_ORDER_TMALL_VIEW';
+
+--SELECT c.COLUMN_NAME, c.DATA_TYPE, c.DATA_LENGTH, c.NULLABLE, com.COMMENTS
+--FROM ALL_TAB_COLUMNS c
+--LEFT JOIN ALL_COL_COMMENTS com ON c.TABLE_NAME = com.TABLE_NAME AND c.COLUMN_NAME = com.COLUMN_NAME
+--WHERE c.TABLE_NAME = 'EC_ORDER_TMALL_VIEW';
+
+SELECT order_type, COUNT(*) AS CNT
+FROM EC_ORDER_TMALL_VIEW
+GROUP BY order_type;
+
+SELECT STATUS, COUNT(*) AS CNT
+FROM EC_ORDER_TMALL_VIEW
+GROUP BY STATUS;
+
+SELECT *
+      FROM EC_ORDER_TMALL_VIEW
+      WHERE ROWNUM <= 100  
+--     TO_CHAR(CREATED_TIME, 'YYYY-MM')>='2023-11' AND ORDER_TYPE='TMCP360'
+    AND STATUS='hang_up'
+    
+SELECT *
+      FROM EC_ORDER_TMALL_VIEW
+      WHERE  out_order_no='3550439054099334230' 'GQ20231004336725'
+      
+SELECT old_order_type, COUNT(*) AS CNT
+FROM EC_ORDER_TMALL_VIEW
+GROUP BY old_order_type;
+
+SELECT *
+      FROM EC_ORDER_TMALL_VIEW
+      WHERE ROWNUM <= 100  
+--     TO_CHAR(CREATED_TIME, 'YYYY-MM')>='2023-11' AND ORDER_TYPE='TMCP360'
+    AND old_order_type='split_order'
+  
+ SELECT order_number,out_order_no,order_type, old_order_type, order_real_cost, 
+ order_count,is_paid, is_deleted, status, goods_code, name, matl_no, freight_number, 
+ created_time, order_freight_time, sn FROM EC_ORDER_TMALL_VIEW WHERE ROWNUM <= 10;
+
+--下单日期
+SELECT TO_CHAR(CREATED_TIME, 'YYYY-MM') AS the_month, COUNT(*) AS CNT
+FROM EC_ORDER_TMALL_VIEW 
+GROUP BY TO_CHAR(CREATED_TIME, 'YYYY-MM') ORDER BY the_month DESC;
+
+SELECT TO_CHAR(CREATED_TIME, 'YYYY-MM-DD') AS the_date, COUNT(*) AS CNT
+FROM EC_ORDER_TMALL_VIEW 
+GROUP BY TO_CHAR(CREATED_TIME, 'YYYY-MM-DD') ORDER BY the_date DESC;
+
+--发货日期
+SELECT TO_CHAR(order_freight_time, 'YYYY-MM') AS the_month, COUNT(*) AS CNT
+FROM EC_ORDER_TMALL_VIEW WHERE order_freight_time IS NOT NULL 
+GROUP BY TO_CHAR(order_freight_time, 'YYYY-MM') ORDER BY the_month DESC;
+
+SELECT TO_CHAR(order_freight_time, 'YYYY-MM-DD') AS the_date, COUNT(*) AS CNT
+FROM EC_ORDER_TMALL_VIEW 
+--WHERE TO_CHAR(order_freight_time, 'YYYY-MM')='2022-01'
+GROUP BY TO_CHAR(order_freight_time, 'YYYY-MM-DD') ORDER BY the_date DESC;
+
+
+SELECT * FROM v$version;
+
+SELECT TO_CHAR(ORDER_FREIGHT_TIME, 'YYYY-MM') AS the_month, COUNT(*) AS CNT
+FROM EC_ORDER_TMALL_VIEW
+GROUP BY TO_CHAR(ORDER_FREIGHT_TIME, 'YYYY-MM') ORDER BY the_date DESC;
+
+SELECT TO_CHAR(order_freight_time, 'YYYY-MM-DD') AS the_date,COUNT(*) AS CNT
+FROM EC_ORDER_TMALL_VIEW WHERE 
+TO_CHAR(order_freight_time, 'YYYY-MM-DD')='2022-10-14'
+GROUP BY TO_CHAR(order_freight_time, 'YYYY-MM-DD');
+
+SELECT TO_CHAR(order_freight_time, 'YYYY-MM') AS the_date,MAX(LENGTH(freight_number)) AS CNT
+FROM EC_ORDER_TMALL_VIEW 
+WHERE TO_CHAR(order_freight_time, 'YYYY-MM-DD') BETWEEN '2022-10-14' AND '2024-01-09'
+GROUP BY TO_CHAR(order_freight_time, 'YYYY-MM');
+
+SELECT freight_number
+FROM EC_ORDER_TMALL_VIEW 
+WHERE TO_CHAR(order_freight_time, 'YYYY-MM-DD')='2022-10-14'
+AND LENGTH(freight_number)=351;
+
+SELECT TO_CHAR(order_freight_time, 'YYYY-MM-DD') AS the_date,MAX(LENGTH(freight_number)) AS CNT
+FROM EC_ORDER_TMALL_VIEW 
+WHERE TO_CHAR(order_freight_time, 'YYYY-MM-DD') BETWEEN '2022-10-14' AND '2022-10-31'
+GROUP BY TO_CHAR(order_freight_time, 'YYYY-MM-DD');
+

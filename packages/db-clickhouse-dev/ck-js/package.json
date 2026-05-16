@@ -1,0 +1,16 @@
+{
+  "name": "ck-js",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@clickhouse/client": "^1.11.1",
+    "@clickhouse/client-web": "^1.11.1"
+  }
+}
