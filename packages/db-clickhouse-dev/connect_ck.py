@@ -11,4 +11,4 @@ if __name__ == '__main__':
         database=dotenv.get('CK_DATABASE')
     )
     print("Result:", client.query("SHOW DATABASES").result_set)
-    #  clickhouse-client --host 10.16.205.211 --port 9000 --password ah49QjRw8.I7y
+    #  clickhouse-client --host your_ck_host --port your_ck_port --password your_password
