@@ -1,6 +1,0 @@
-PORT = 5000
-# PUBLIC_IP = "0.0.0.0"
-PUBLIC_IP = "10.254.104.188"
-DATABASE_URL="postgresql://PGUSER:PGPASSWARD@PGHOST/PGDATABASE?sslmode=require"
-# uncomment next line if you use Prisma <5.10
-# DATABASE_URL_UNPOOLED="postgresql://PGUSER:PGPASSWARD@PGHOST/PGDATABASE?sslmode=require"
